@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valentine Surprise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Indie+Flower&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff7fb;--card:#ffffff;--accent:#ff6b9a;--muted:#6b4150}
+    *{box-sizing:border-box}
+    body{font-family:'Poppins',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;background:linear-gradient(180deg,#fff7fb,#fff1f6);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+    .wrap{width:100%;max-width:720px}
+    .card{background:var(--card);border-radius:16px;padding:26px;box-shadow:0 8px 26px rgba(0,0,0,0.08);text-align:center}
+    h1{margin:0;font-size:22px;color:var(--accent)}
+    p.lead{margin:8px 0 18px;color:var(--muted)}
+
+    .gif{margin:14px auto;border-radius:12px;overflow:hidden;max-width:360px}
+    .gif img{display:block;width:100%;height:auto}
+
+    .big{font-family:'Indie Flower',cursive;font-size:30px;color:#b3004a;margin:10px 0}
+
+    .btn-row{display:flex;gap:12px;justify-content:center;margin-top:14px}
+    button.btn{padding:12px 18px;border-radius:999px;border:0;cursor:pointer;font-weight:700;box-shadow:0 6px 14px rgba(0,0,0,0.08);transition:transform .28s ease}
+    .btn-yes{background:linear-gradient(90deg,#ffd1e3,#ff6b9a);color:white}
+    .btn-no{background:#fff;border:2px solid #ffd7e4;color:#d64073}
+    .btn-next{background:linear-gradient(90deg,#ffe6b2,#ffb28a);color:#5a2a18}
+    .btn-back{position:fixed;right:18px;bottom:18px;background:#fff;border:2px solid #ffd7e4;padding:8px 12px;border-radius:10px}
+
+    .hidden{display:none}
+
+    .angpau-row{display:flex;gap:12px;justify-content:center;margin-top:18px}
+    .angpau{width:120px;height:150px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid #ffdce7;display:flex;align-items:center;justify-content:center;background:#fff}
+    .angpau img{width:100%;height:100%;object-fit:cover}
+
+    .content{padding:10px;text-align:left}
+    .big-text{font-weight:700;color:#b3004a;margin-bottom:8px}
+
+    .corner-back{position:fixed;right:16px;bottom:16px}
+
+    @media (max-width:480px){.big{font-size:22px}.angpau{width:90px;height:120px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Home -->
+    <div id="page-home" class="card">
+      <h1>HAYIII! ^^ i made something for you :D</h1>
+      <div class="gif" aria-hidden="false">
+        <img src="https://media1.tenor.com/m/OOj-QK2NxUkAAAAC/cat-kitty.gif" alt="cute chibi capybara gif">
+      </div>
+      <div class="big">do you wanna see??</div>
+      <div class="btn-row">
+        <button id="btn-yay" class="btn btn-yes">YAY OFC!</button>
+        <button id="btn-nah" class="btn btn-no">HELL NAH</button>
+      </div>
+    </div>
+
+    <!-- Hell Nah page (updated with two choices) -->
+    <div id="page-nah" class="card hidden">
+      <h1>OH JADI GITU? KENAPA GAMAUK?</h1>
+      <p class="lead">UDH ADA COWO LAIN YA? SAPA? GABOLEH YA AKU YOUR BF ONE AND ONLY.</p>
+      <div class="gif">
+        <img src="https://media1.tenor.com/m/CWZQY7DL1ykAAAAC/ahh.gif" alt="angry sulking gif">
+      </div>
+      <div class="btn-row">
+        <button id="btn-gamau" class="btn btn-no">aku gamau kakak.. jangan maksa aku ya, please??</button>
+        <button id="btn-kidding" class="btn btn-yes">heheh jus kiding iya aku maw kok</button>
+      </div>
+    </div>
+
+    <!-- Yay page (after choose yes) -->
+    <div id="page-yay" class="card hidden">
+      <h1>HAHAHAH YEAYY THAT'S MY GOOD GIRL</h1>
+      <div class="gif">
+        <img src="https://media1.tenor.com/m/_sTH2Ou_9iIAAAAd/cat-meme-hehehe.gif" alt="cute couple hug gif">
+      </div>
+      <div class="btn-row">
+        <button id="btn-next-to-angpau" class="btn btn-next">next</button>
+      </div>
+    </div>
+
+    <!-- Angpau selection -->
+    <div id="page-angpau" class="card hidden">
+      <h1>SILAHKAN DIPILIH YAA 3 ANGPAU DIBAWAH INI ^^</h1>
+      <div class="angpau-row">
+        <div id="angpau-1" class="angpau" title="Angpau 1"><img src="d:\foto tugas\angpao.png" alt="angpau 1"></div>
+        <div id="angpau-2" class="angpau" title="Angpau 2"><img src="d:\foto tugas\angpao.png" alt="angpau 2"></div>
+        <div id="angpau-3" class="angpau" title="Angpau 3"><img src="d:\foto tugas\angpao.png" alt="angpau 3"></div>
+      </div>
+    </div>
+
+    <!-- Angpau 1 result -->
+    <div id="page-angpau1" class="card hidden">
+      <h1>HAPPYY VALENTINE NACELELELEL &lt;3</h1>
+      <div class="content">
+        <p class="big-text">happy valentine yah cantikk</p>
+        <p>HAPPY VALENTINE’S DAY TO THE ONE WHO MAKES MY WORLD FEEL WARMER IN WAYS I NEVER KNEW BEFORE ❤️❤️
+
+Honestly, I don’t think I’ll ever be able to fully explain how much you mean to me. You came into my life so naturally, yet somehow changed so many things inside me. The way you talk, the way you care, the way you exist it all makes my days feel lighter.
+I really appreciate you. For your kindness, and even the little things you probably don’t realize you do. Thank you for showing up, for listening, for making me feel SEEN and VALUED 🥺
+You’re not just beautiful on the outside (though you really, really are), but your heart, your thoughts, and your presence are what make you so special to me.
+
+I’m so grateful to know you, to talk to you, to share moments with you. Having you in my life feels like a gift I never want to take for granted.
+
+Today is Valentine’s Day, but honestly… I appreciate you every single day. And I hope you always know how deeply you’re cared for by me ❤️</p>
+      </div>
+      <div class="gif">
+        <img src="https://media1.tenor.com/m/4n4cErvEq_sAAAAd/yapapa-cat.gif" alt="valentine flowers gif">
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-next" data-back="page-angpau">next</button>
+      </div>
+    </div>
+
+    <!-- Angpau 2 result -->
+    <div id="page-angpau2" class="card hidden">
+      <h1>MAKASYI YAA UDAH MAU KENAL AND DEKET SAMA AKUU?? :(</h1>
+      <div class="content">
+        <p class="big-text">Thank you for coming into my life.. 😕</p>
+        <p>You came in quietly, but somehow changed so many things. You make my days feel lighter, my heart feel warmer, and my world feel a little more meaningful. I’m really grateful for every moment, every conversation, every laugh we’ve shared.
+Having you in my life is something i truly appreciate, i love you, more than words can explain 🙇🏻</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-next" data-back="page-angpau">next</button>
+      </div>
+    </div>
+
+    <!-- Angpau 3 result -->
+    <div id="page-angpau3" class="card hidden">
+      <h1>I LOVE YOUU NACELELELEL</h1>
+      <div class="gif">
+        <img src="https://media1.tenor.com/m/ig-ckLbY7iUAAAAd/startamilchat-sanjay-chat.gif" alt="big love gif">
+      </div>
+      <div class="content">
+        <p class="big-text">lovu</p>
+        <p>Not just for who you are, but for how you make me feel when you’re around. You make my days brighter without even trying, and my heart feels calmer knowing you exist in this world.
+I love the way you care, the way you smile, the way you’re simply you. nanti kita belii eskim yah. Love you to the moon and back</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-next" data-back="page-angpau">next</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Floating back button (for angpau result pages) -->
+  <button id="floating-back" class="btn btn-no hidden" style="position:fixed;right:18px;bottom:18px;">back</button>
+
+  <script>
+    // Page elements
+    const pages = {
+      home: document.getElementById('page-home'),
+      nah: document.getElementById('page-nah'),
+      yay: document.getElementById('page-yay'),
+      angpau: document.getElementById('page-angpau'),
+      angpau1: document.getElementById('page-angpau1'),
+      angpau2: document.getElementById('page-angpau2'),
+      angpau3: document.getElementById('page-angpau3')
+    };
+
+    const btnYay = document.getElementById('btn-yay');
+    const btnNah = document.getElementById('btn-nah');
+    const btnYayNext = document.getElementById('btn-next-to-angpau');
+    const ang1 = document.getElementById('angpau-1');
+    const ang2 = document.getElementById('angpau-2');
+    const ang3 = document.getElementById('angpau-3');
+
+    const floatingBack = document.getElementById('floating-back');
+
+    // Hell-nah specific buttons
+    const btnGamau = document.getElementById('btn-gamau');
+    const btnKidding = document.getElementById('btn-kidding');
+    let refuseCount = 0;
+
+    function show(page){
+      // hide all
+      Object.values(pages).forEach(p=>p.classList.add('hidden'));
+      // show target
+      if(page && pages[page]) pages[page].classList.remove('hidden');
+      // manage floating back button
+      if(['angpau1','angpau2','angpau3'].includes(page)){
+        floatingBack.classList.remove('hidden');
+      } else {
+        floatingBack.classList.add('hidden');
+      }
+      // scroll to top of shown card
+      const el = pages[page] || pages.home;
+      el.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+
+    // initial
+    show('home');
+
+    // interactions
+    document.getElementById('btn-nah').addEventListener('click', ()=> show('nah'));
+
+    // if user chooses the kidding option at any time, go back to home immediately
+    btnKidding.addEventListener('click', ()=> {
+      // small pulse to celebrate
+      btnKidding.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.08)' },
+        { transform: 'scale(1)' }
+      ],{ duration: 300 });
+      // reset state
+      refuseCount = 0;
+      btnKidding.style.transform = '';
+      btnGamau.textContent = 'aku gamau kakak.. jangan maksa aku ya, please??';
+      show('home');
+    });
+
+    // gamau logic: each click escalates the interaction
+    btnGamau.addEventListener('click', ()=>{
+      refuseCount++;
+      if(refuseCount === 1){
+        // small grow for the 'jus kiding' button, update text of gamau
+        btnKidding.style.transform = 'scale(1.2)';
+        btnKidding.style.transition = 'transform .25s ease';
+        btnGamau.textContent = 'aku gamau. jangan paksa';
+      } else if(refuseCount === 2){
+        // grow 2x lipat (relative to current size)
+        // take current computed scale (fallback 1.2) and double it
+        const current = getScale(btnKidding) || 1.2;
+        btnKidding.style.transform = `scale(${current * 2})`;
+        btnKidding.style.transition = 'transform .28s ease';
+        btnGamau.textContent = 'apasih kakak ini maksa bgt';
+      } else if(refuseCount === 3){
+        const current = getScale(btnKidding) || 2.4;
+        btnKidding.style.transform = `scale(${current * 2})`;
+        btnKidding.style.transition = 'transform .28s ease';
+        // change the gamau button to final "IYA IYA..."
+        btnGamau.textContent = 'IYA IYA AKU MAU I LOVE YOU.';
+      } else {
+        // if clicked again after final, go home
+        // reset state before going home
+        refuseCount = 0;
+        btnKidding.style.transform = '';
+        btnGamau.textContent = 'aku gamau kakak.. jangan maksa aku ya, please??';
+        show('home');
+      }
+    });
+
+    // helper to read numeric scale from transform style
+    function getScale(el){
+      const st = el.style.transform || window.getComputedStyle(el).transform;
+      if(!st || st === 'none') return 1;
+      // matrix(a, b, c, d, e, f) => scaleX = a
+      const m = st.match(/matrix\(([^)]+)\)/);
+      if(m){
+        const parts = m[1].split(',').map(s=>parseFloat(s.trim()));
+        return parts[0] || 1;
+      }
+      const s = st.match(/scale\(([^)]+)\)/);
+      if(s){
+        return parseFloat(s[1]) || 1;
+      }
+      return 1;
+    }
+
+    // other flows
+    btnYay.addEventListener('click', ()=> show('yay'));
+    if(btnYayNext) btnYayNext.addEventListener('click', ()=> show('angpau'));
+
+    ang1.addEventListener('click', ()=> show('angpau1'));
+    ang2.addEventListener('click', ()=> show('angpau2'));
+    ang3.addEventListener('click', ()=> show('angpau3'));
+
+    // next buttons inside angpau result pages to go back to angpau selection
+    document.querySelectorAll('.btn-next').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        show('angpau');
+      });
+    });
+
+    // floating back button returns to main home page
+    floatingBack.addEventListener('click', ()=> show('home'));
+
+    // accessibility: allow Enter to accept default yes on home
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter'){
+        const visible = Object.keys(pages).find(k=>!pages[k].classList.contains('hidden'));
+        if(visible === 'home') btnYay.click();
+      }
+    });
+  </script>
+</body>
+</html>
